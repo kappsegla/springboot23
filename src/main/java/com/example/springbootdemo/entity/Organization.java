@@ -18,7 +18,6 @@ public class Organization {
 
     private String name;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Person> persons = new HashSet<>();
-
 }

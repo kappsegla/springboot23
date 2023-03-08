@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/names")
+@RequestMapping("/persons")
 public class PersonController {
 
     private final PersonRepository repo;
@@ -36,7 +36,7 @@ public class PersonController {
     }
 
     @GetMapping("/lang")
-    String preferedLanguage(@RequestHeader(HttpHeaders.ACCEPT_LANGUAGE) String lang){
+    String preferredLanguage(@RequestHeader(HttpHeaders.ACCEPT_LANGUAGE) String lang){
         return lang;
     }
 }

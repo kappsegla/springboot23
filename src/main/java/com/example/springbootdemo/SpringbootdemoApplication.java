@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
+import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.thymeleaf.spring6.SpringTemplateEngine;
@@ -22,9 +24,12 @@ public class SpringbootdemoApplication implements WebMvcConfigurer {
 
     @Bean
     public LocaleResolver localeResolver() {
-        SessionLocaleResolver slr = new SessionLocaleResolver();
-        slr.setDefaultLocale(Locale.US);
-        return slr;
+        //https://reflectoring.io/spring-boot-internationalization/
+//        AcceptHeaderLocaleResolver hlr = new AcceptHeaderLocaleResolver();
+//        hlr.setDefaultLocale(Locale.ENGLISH);
+        //SessionLocaleResolver slr = new SessionLocaleResolver();
+        //slr.setDefaultLocale(Locale.ENGLISH);
+        return new CookieLocaleResolver();
     }
 
     @Bean

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Persons</title>
+</head>
+<body>
+<p th:text="#{greeting}"></p>
+<a href="http://localhost:8080/showPersons?lang=en">English</a>
+<a href="http://localhost:8080/showPersons?lang=sv">Svenska</a>
+<table>
+    <tr>
+        <td th:text="#{id}"></td>
+        <td th:text="#{name}"></td>
+    </tr>
+    <tr th:each="pers: ${allPersons}">
+        <td th:text="${pers.getId()}"></td>
+        <td th:text="${pers.getName()}"></td>
+    </tr>
+</table>
+</body>
+</html>

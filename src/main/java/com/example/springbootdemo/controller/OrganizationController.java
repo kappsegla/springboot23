@@ -2,6 +2,7 @@ package com.example.springbootdemo.controller;
 
 import com.example.springbootdemo.entity.Organization;
 import com.example.springbootdemo.entity.Person;
+import com.example.springbootdemo.projection.OrgName;
 import com.example.springbootdemo.repository.OrganizationRepository;
 import com.example.springbootdemo.repository.PersonRepository;
 import jakarta.transaction.Transactional;
@@ -34,6 +35,12 @@ public class OrganizationController {
     Organization getById(@PathVariable Long id) {
         return orgRepo.findById(id).orElseThrow();
     }
+
+    @GetMapping("/names")
+    List<OrgName> getOnlyNames() {
+        return orgRepo.findNamesBy();
+    }
+
 
     @GetMapping
     List<Organization> getOrgs() {

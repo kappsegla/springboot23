@@ -19,6 +19,7 @@ public class Configurations implements WebMvcConfigurer {
     @Bean
     public LocaleResolver localeResolver() {
         CookieLocaleResolver cookieLocaleResolver = new CookieLocaleResolver();
+
         return cookieLocaleResolver;
     }
 

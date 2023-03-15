@@ -5,6 +5,7 @@
     <title>Persons</title>
 </head>
 <body>
+<div th:insert="~{fragments::menu}"></div>
 <p th:text="#{greeting}"></p>
 <a href="http://localhost:8080/showPersons?lang=en">English</a>
 <a href="http://localhost:8080/showPersons?lang=sv">Svenska</a>
@@ -18,5 +19,6 @@
         <td th:text="${pers.getName()}"></td>
     </tr>
 </table>
+<div th:insert="~{fragments::footer}"></div>
 </body>
 </html>

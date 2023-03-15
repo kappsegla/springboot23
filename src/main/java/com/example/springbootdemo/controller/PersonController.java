@@ -6,6 +6,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -20,8 +21,9 @@ public class PersonController {
     }
 
     @GetMapping("/{id}")
-    ResponseEntity<Person> getAName(@PathVariable long id) {
-        return ResponseEntity.of(repo.findById(id));
+    Person getAName(@PathVariable long id) {
+        return repo.findById(id).orElseThrow();
+                //.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
     @GetMapping

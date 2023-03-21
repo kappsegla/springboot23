@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/orgs")
+@RequestMapping("/api/orgs")
 public class OrganizationController {
 
     private final OrganizationRepository orgRepo;

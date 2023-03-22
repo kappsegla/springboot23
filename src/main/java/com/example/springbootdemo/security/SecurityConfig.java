@@ -22,8 +22,11 @@ public class SecurityConfig {
     public SecurityFilterChain filterChainForRestApi(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .securityMatcher("/api/**")
+                .csrf()
+                .disable()
                 .authorizeHttpRequests()
-                .anyRequest().hasRole("ADMIN")
+                .requestMatchers(HttpMethod.GET, "/api/persons/*").hasRole("ADMIN")
+                .anyRequest().authenticated()
                 .and()
                 .httpBasic()
                 .and()
@@ -42,7 +45,10 @@ public class SecurityConfig {
                 .requestMatchers("/showPersons").authenticated()
                 .anyRequest().denyAll()
                 .and()
+                //.oauth2Login()
+                //.defaultSuccessUrl("/showPersons")
                 .formLogin()
+                .defaultSuccessUrl("/showPersons")
                 .and();
 
         return httpSecurity.build();

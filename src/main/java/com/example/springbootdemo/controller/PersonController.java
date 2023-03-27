@@ -3,10 +3,7 @@ package com.example.springbootdemo.controller;
 import com.example.springbootdemo.entity.Person;
 import com.example.springbootdemo.repository.PersonRepository;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 

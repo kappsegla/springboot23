@@ -8,8 +8,8 @@ public class Book {
     @Id
     public String id;
 
-    public String title;
-    public String author;
+    private String title;
+    private String author;
 
     public Book() {
     }

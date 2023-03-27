@@ -3,7 +3,6 @@ package com.example.springbootdemo.repository;
 import com.example.springbootdemo.entity.Organization;
 import com.example.springbootdemo.projection.OrgName;
 import org.springframework.data.jpa.repository.EntityGraph;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.ListCrudRepository;
 
 import java.util.List;

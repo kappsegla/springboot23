@@ -1,6 +1,7 @@
 package com.example.springbootdemo.filter;
 
 import jakarta.servlet.*;
+import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.annotation.Order;
@@ -17,9 +18,8 @@ public class LoggingFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
 
-        logger.info("Incoming request for: " + servletRequest.getScheme() );
+        logger.info("Incoming request for: {}", ((HttpServletRequest) servletRequest).getServletPath());
 
-        filterChain.doFilter(servletRequest,servletResponse);
-
+        filterChain.doFilter(servletRequest, servletResponse);
     }
 }

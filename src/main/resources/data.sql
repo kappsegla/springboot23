@@ -1,1 +1,1 @@
-Insert ignore into user_credentials(name,password) values('admin2','');
+INSERT IGNORE INTO user_credentials(name, password) values('admin','');

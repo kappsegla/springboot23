@@ -1,14 +1,12 @@
 package com.example.springbootdemo;
 
-import com.example.springbootdemo.security.UserCredentials;
-import com.example.springbootdemo.security.UserCredentialsRepository;
+import com.example.springbootdemo.documents.Book;
+import com.example.springbootdemo.mongorepo.BookRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.time.ZoneId;
 import java.util.Locale;
 import java.util.TimeZone;
 
@@ -20,6 +18,19 @@ public class SpringbootdemoApplication {
         TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
         SpringApplication.run(SpringbootdemoApplication.class, args);
     }
+
+    @Bean
+    CommandLineRunner runOnStartup(BookRepository bookRepository){
+        return new CommandLineRunner() {
+            @Override
+            public void run(String... args) throws Exception {
+                bookRepository.deleteAll();
+                bookRepository.save(new Book(null,"Programming Java","Venkat"));
+            }
+        };
+    }
+
+
 
 //    @Bean
 //    CommandLineRunner runOnStartUp(UserCredentialsRepository repo, PasswordEncoder passwordEncoder) {

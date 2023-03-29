@@ -3,8 +3,11 @@ package com.example.springbootdemo.controller;
 import com.example.springbootdemo.entity.Person;
 import com.example.springbootdemo.repository.PersonRepository;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -29,11 +32,17 @@ public class PersonController {
     }
 
     @PostMapping
-    void addName(@RequestBody Person person) {
+    ResponseEntity<Void> addName(@RequestBody Person person) {
         String name = person.getName();
         if (name == null || name.isEmpty())
             throw new IllegalStateException();
-        repo.save(person);
+        var newEntity = repo.save(person);
+        URI location = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(newEntity.getId())
+                .toUri();
+        return ResponseEntity.created(location).build();
     }
 
     @GetMapping("/lang")

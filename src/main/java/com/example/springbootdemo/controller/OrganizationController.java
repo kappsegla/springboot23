@@ -66,5 +66,10 @@ public class OrganizationController {
         orgRepo.findById(orgId).ifPresent(o -> o.getPersons().remove(personRepo.findById(personId).orElseThrow()));
     }
 
+    @GetMapping("/search")
+    List<Organization> findOrgs(@RequestBody String name){
+        return orgRepo.findByPersonsName(name);
+    }
+
 
 }
